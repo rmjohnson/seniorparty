@@ -1,0 +1,12 @@
+<p>
+  <h2><%=h @quote.name %></h2>
+</p>
+
+<p>
+  	<%=h @quote.content %>
+</p>
+
+
+<%= link_to 'Submit a new quote', quotes_path %> |
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'View more quotes', new_quote_path %>

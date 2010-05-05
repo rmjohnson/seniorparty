@@ -1,0 +1,23 @@
+<h1>Submit a New Quote!</h1>
+
+<% form_for(@quote) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :student_id %> ID<br />
+    <%= f.text_field :student_id %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'View more quotes', new_quote_path %>
