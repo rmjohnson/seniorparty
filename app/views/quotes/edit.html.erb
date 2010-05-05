@@ -1,0 +1,24 @@
+<h1>Editing quote</h1>
+
+<% form_for(@quote) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    Student ID#<br />
+    <%= f.text_field :studentid %>
+  </p>
+  <p>
+    Email Address<br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    Quote<br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @quote %> |
+<%= link_to 'Back', quotes_path %>

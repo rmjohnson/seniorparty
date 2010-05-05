@@ -1,0 +1,24 @@
+<h1>Quotes</h1>
+
+<table>
+  <tr>
+    <th>Student ID#</th>
+    <th>Email</th>
+    <th>Quote</th>
+  </tr>
+
+<% @quotes.each do |quote| %>
+  <tr>
+    <td><%=h quote.studentid %></td>
+    <td><%=h quote.email %></td>
+    <td><%=h quote.content %></td>
+    <td><%= link_to 'Show', quote %></td>
+    <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
+    <td><%= link_to 'Destroy', quote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New quote', new_quote_path %>
