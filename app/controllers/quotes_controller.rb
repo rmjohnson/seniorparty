@@ -14,7 +14,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1.xml
   def show
     @quote = Quote.find(params[:id])
-    redirect_to :action => "new"
+    redirect_to root_path
 
   end
 
