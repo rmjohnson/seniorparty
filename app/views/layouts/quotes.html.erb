@@ -3,13 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+  <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/fade.js"></script>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Quotes: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<div class="noticebox">
+  <% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+  <% end %>
+</div>
 
 <%= yield %>
 
