@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   # couldn't get a list action working by itself, but when I changed the name of it to 'new' it worked...
   # ...so i just hijacked :new and made it instead a kind of list function... should fix that.
 
-  before_filter :authentication, :except => [:show, :new, :create, :index]
+  before_filter :authentication, :except => [:create, :index]
 
   # GET /quotes
   # GET /quotes.xml
@@ -28,14 +28,15 @@ class QuotesController < ApplicationController
     end
   end
 
-  def new
-    @quotes = Quote.find(:all)
+  def list
+    @quotes = Quote.all
 
     respond_to do |format|
-      format.html { render 'quotes/list' }
-      format.xml  { render :xml => @quotes }
+      format.html # list.html.erb
+      format.xml { render :xml => @quotes }
     end
   end
+
 
   # GET /quotes/1/edit
   def edit
@@ -50,7 +51,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       if @quote.save
         flash[:notice] = 'Quote was successfully created.'
-        format.html { redirect_to(@quote) }
+        format.html { redirect_to('/') }
         format.xml  { render :xml => @quote, :status => :created, :location => @quote }
       else
         format.html { render :action => 'index' }

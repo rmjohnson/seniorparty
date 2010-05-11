@@ -9,14 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100430223041) do
-
-  create_table "posts", :force => true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20100507164352) do
 
   create_table "quotes", :force => true do |t|
     t.string   "name"
@@ -24,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20100430223041) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end
