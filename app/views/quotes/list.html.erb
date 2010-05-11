@@ -1,18 +1,20 @@
-<h1>Senior Quotes</h1>
+<h1>Senior Quotes List</h1>
 <hr/>
 
 
 <% @quotes.each do |quote| %>
-  <div style="background-color:#DADADA">
-  <h5>"<%=h quote.content %>"</h5>
-  
-  <h4>-<%=h quote.name %></h4>
-  
-  <h6>
-    <%= link_to 'View', quote %> |
-    <%= link_to 'Edit', edit_quote_path(quote) %> |
-    <%= link_to 'Destroy', quote, :confirm => 'Are you sure?', :method => :delete %>
-  </h6>
+  <div class="list">
+    <h5>
+      "<%=h quote.content %>"
+    </h5>
+    <div id="name">
+      <h4>-<%=h quote.name %></h4>
+    </div>
+    <div id="options">
+      <%= link_to 'View', quote %> |
+      <%= link_to 'Edit', edit_quote_path(quote) %> |
+      <%= link_to 'Delete', quote, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
   </div>
 <% end %>
 
