@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Student ID#</th>
+    <th>Name</th>
     <th>Email</th>
     <th>Quote</th>
   </tr>
@@ -10,9 +11,9 @@
 <% @quotes.each do |quote| %>
   <tr>
     <td><%=h quote.studentid %></td>
+    <td><%=h quote.name %></td>
     <td><%=h quote.email %></td>
     <td><%=h quote.content %></td>
-    <td><%= link_to 'Show', quote %></td>
     <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
     <td><%= link_to 'Destroy', quote, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
