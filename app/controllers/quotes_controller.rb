@@ -1,4 +1,11 @@
 class QuotesController < ApplicationController
+
+  # Before filter and the little private thing in the bottom are for authentication.
+  # couldn't get a list action working by itself, but when I changed the name of it to 'new' it worked...
+  # ...so i just hijacked :new and made it instead a kind of list function... should fix that.
+
+  before_filter :authentication, :except => [:create, :new]
+
   # GET /quotes
   # GET /quotes.xml
   def index
@@ -10,14 +17,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /quotes/1
-  # GET /quotes/1.xml
-  def show
-    @quote = Quote.find(params[:id])
-    redirect_to root_path
-
-  end
-
   # GET /quotes/new
   # GET /quotes/new.xml
   def new
@@ -25,7 +24,6 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @quote }
     end
   end
 
@@ -37,11 +35,11 @@ class QuotesController < ApplicationController
     respond_to do |format|
       if @quote.save
         flash[:notice] = 'Quote was successfully created.'
-        format.html { redirect_to(@quote) }
+        format.html { redirect_to('/') }
         format.xml  { render :xml => @quote, :status => :created, :location => @quote }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @quote.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @quote, :status => :unprocessable_entity }
       end
     end
   end
@@ -72,6 +70,16 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(quotes_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  def authentication
+    id = "admin"
+    pass = "admin"
+    authenticate_or_request_with_http_basic do |user,password|
+      user == id && password == pass
     end
   end
 end

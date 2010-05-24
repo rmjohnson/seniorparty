@@ -1,15 +1,12 @@
 <p>
-  <b>Student ID#</b>
-  <%=h @quote.studentid %>
+  <h2><%=h @quote.name %></h2>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%=h @quote.email %>
+  	<%=h @quote.content %>
 </p>
 
-<p>
-  <b>Quote</b>
-  <%=h @quote.content %>
-</p>
 
+<%= link_to 'Submit a new quote', quotes_path %> |
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'View more quotes', new_quote_path %>

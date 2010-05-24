@@ -4,15 +4,15 @@
   <%= f.error_messages %>
 
   <p>
-    Student ID#<br />
-    <%= f.text_field :studentid %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </p>
   <p>
-    Email Address<br />
-    <%= f.text_field :email %>
+    <%= f.label :student_id %><br />
+    <%= f.text_field :student_id %>
   </p>
   <p>
-    Quote<br />
+    <%= f.label :content %><br />
     <%= f.text_area :content %>
   </p>
   <p>
@@ -20,5 +20,6 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @quote %> |
-<%= link_to 'Back', quotes_path %>
+<%= link_to 'Submit a new quote', quotes_path %> |
+<%= link_to 'View', @quote %> |
+<%= link_to 'Back to view quotes', new_quote_path %>
